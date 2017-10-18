@@ -10,6 +10,7 @@ namespace SimpleUniInstaller
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
