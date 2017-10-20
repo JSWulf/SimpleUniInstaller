@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace SimpleUniInstaller
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
             foreach (var arg in args)
@@ -37,6 +37,7 @@ namespace SimpleUniInstaller
                         break;
                     default:
                         //check for parameter arguments
+                        ParamArg(arg);
                         break;
                 }
             }
@@ -50,12 +51,37 @@ namespace SimpleUniInstaller
 
         static private string directory;
 
-        public string Directory
+        static public string Directory
         {
             get { return directory; }
             set { directory = value; }
         }
 
+        public static void ParamArg(string arg)
+        {
+            string[] narg;
+            string remQ = "";
+            try
+            {
+                narg = arg.Split(':');
+                remQ = narg[1].Replace("\"", "");
+            }
+            catch
+            {
+                //throw new Exception("Invalid Argument: " + arg);
+                Console.WriteLine("Invalid Argument: " + arg);
+            }
+            
+
+            Console.WriteLine(arg);
+            Console.WriteLine(remQ);
+
+            if (arg.Contains("/dir:"))
+            {
+                Directory = remQ;
+            }
+
+        }
 
 
 
