@@ -21,19 +21,20 @@ namespace SimpleUniInstaller
                 switch (arg.ToLower())
                 {
                     case (@"/uninstall"):
-                        // uninstaller
+                        uninstall = true;
                         break;
                     case (@"/silent"):
-                        // silent install
+                        silent = true;
                         break;
                     case (@"/?"):
-                        // help
+                        help = true;
                         break;
                     case(@"/extract"):
-                        // Extract files to running directory
+                        extract = true;
                         break;
                     case (@"/make"):
                         // read setup.config for install folder, company, product, copyright, shortcut, prereqs?.
+                        // still to be decided.
                         break;
                     default:
                         //check for parameter arguments
@@ -57,7 +58,7 @@ namespace SimpleUniInstaller
             set { directory = value; }
         }
 
-        public static void ParamArg(string arg)
+        public static string ParamArg(string arg)
         {
             string[] narg;
             string remQ = "";
@@ -69,7 +70,7 @@ namespace SimpleUniInstaller
             catch
             {
                 //throw new Exception("Invalid Argument: " + arg);
-                Console.WriteLine("Invalid Argument: " + arg);
+                return "Invalid Argument: " + arg;
             }
             
 
@@ -81,6 +82,7 @@ namespace SimpleUniInstaller
                 Directory = remQ;
             }
 
+            return remQ;
         }
 
 
