@@ -8,6 +8,29 @@ namespace SimpleUniInstaller
 {
     public class Installer
     {
+        public Installer(string config)
+        {
+            ReadConfig(config);
+        }
+
+        public string CompanyName { get; set; }
+        public string SoftwareName { get; set; }
+        public string InstallDirectory { get; set; }
+
+        private void ReadConfig(string file)
+        {
+
+        }
+
+        private void CopyDirectory()
+        {
+
+        }
+
+        private void CreateShortcuts()
+        {
+
+        }
 
     }
 }
